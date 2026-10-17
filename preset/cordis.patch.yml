@@ -1,0 +1,71 @@
+# 汉语词典模式（preset-zh-dict）
+#
+# 一个 @deepseek-ai/dsh-agent-preset 声明：选中该模式的会话获得
+# 完整的标准工具集 + 本地汉语词典能力（dict_lookup）。
+#
+# 与 standard 的差异只有两点：
+#   1. 多一行 cn-dict —— 注册模型可见的 dict_lookup 工具和词典纪律提示词节；
+#   2. persona 前缀说明"词典模式"下的作答纪律（工具自带的提示词节是权威来源）。
+#
+# 服务（tools / systemPrompt 等注册表）都在 Host 组合里，预设只贡献注册项，故无需 isolate。
+
+- insert:
+    - id: preset-zh-dict
+      name: '@deepseek-ai/dsh-agent-preset'
+      config:
+        id: zh-dict
+        name: 汉语词典
+        description: 标准能力 + 本地汉语词典：查字（部首/笔画/异体/组件）、词语释义、成语出处例句、歇后语、汉英对译
+        order: 12
+        plugins:
+          # ── 人设 ────────────────────────────────────────────────────────
+          - id: persona
+            name: '@deepseek-ai/dsh-persona'
+            config:
+              prefix: |
+                本会话处于「汉语词典」模式：你的首要职责是准确给出汉语字词的语言学事实——读音、释义、部首笔画、成语出处、异体字、英文对译。
+                这些事实来自随附的本地词库（dict_lookup 工具），不是你的记忆；涉及汉语字词的问题先查词库再作答，词库未收录时才用自身知识并明确标注。
+              includeHarnessIdentity: true
+              includeRuntimeContext: true
+
+          # ── 词典能力 ────────────────────────────────────────────────────
+          - id: cn-dict
+            name: '@GJY-cmd/dsh-cn-dict'
+            config:
+              dbPath: <你的词库路径>
+              defaultLimit: 5
+              includeEnglish: true
+
+          # ── 环境说明（仓库规则、技能目录）────────────────────────────────
+          - id: agent-instructions
+            name: '@deepseek-ai/dsh-agent-instructions'
+            config:
+              maxBytes: 65536
+          - id: skill-filesystem
+            name: '@deepseek-ai/dsh-skill-filesystem'
+          - id: tool-skill
+            name: '@deepseek-ai/dsh-tool-skill'
+
+          # ── 执行环境（与 standard 一致：PowerShell + 文件系统）────────────
+          - id: tool-pwsh
+            name: '@deepseek-ai/dsh-tool-pwsh'
+          - id: tool-fs
+            name: '@deepseek-ai/dsh-tool-fs'
+          - id: tool-fs-search
+            name: '@deepseek-ai/dsh-tool-fs-search'
+            config:
+              sampleOverCapGlobResults: false
+          - id: tool-jobs
+            name: '@deepseek-ai/dsh-tool-jobs'
+
+          # ── 交互与检索 ──────────────────────────────────────────────────
+          - id: tool-web
+            name: '@deepseek-ai/dsh-tool-web'
+          - id: tool-ask-user
+            name: '@deepseek-ai/dsh-tool-ask-user'
+          - id: tool-todo
+            name: '@deepseek-ai/dsh-tool-todo'
+            config:
+              allowParallelInProgress: true
+          - id: tool-present
+            name: '@deepseek-ai/dsh-tool-present'

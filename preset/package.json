@@ -1,0 +1,29 @@
+{
+  "name": "@GJY-cmd/dsh-cn-dict-preset",
+  "version": "0.1.0",
+  "description": "DSH「汉语词典」模式：标准工具集 + 本地汉语词典能力（dict_lookup）",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dependencies": {
+    "@GJY-cmd/dsh-cn-dict": "file:../"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "meta": {
+    "title": "汉语词典模式",
+    "description": "新增「汉语词典」Agent 模式：查字、词、成语、歇后语与汉英对译"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GJY-cmd/dsh-cn-dict.git"
+  }
+}

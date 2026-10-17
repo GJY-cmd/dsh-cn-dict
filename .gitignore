@@ -1,0 +1,11 @@
+# 词库与源数据：体积大且受第三方许可约束，不进仓库
+chinese.sqlite
+chinese.sqlite-wal
+chinese.sqlite-shm
+cache/
+*.json.gz
+
+# 依赖与系统文件
+node_modules/
+.DS_Store
+Thumbs.db

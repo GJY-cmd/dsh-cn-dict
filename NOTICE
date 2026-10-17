@@ -1,0 +1,97 @@
+# NOTICE
+
+本项目（**代码**）以 MIT 许可发布，见 [LICENSE](./LICENSE)。
+
+**本项目不附带任何词库数据。** 使用者按 `tools/build-cn-dict.cjs` 自行构建出的词库，
+是下列第三方数据的衍生作品，受各自许可约束（详见 [DATA-LICENSES.md](./DATA-LICENSES.md)）。
+
+---
+
+## 1. chinese-xinhua
+
+用于：`words`、`ci`、`idioms`、`xiehouyu` 表
+
+- 来源：https://github.com/pwxcoo/chinese-xinhua
+- 许可：MIT License
+- 版权：Copyright (c) 2018 PWXCOO
+
+该项目的 MIT 许可全文（需在再分发时保留）：
+
+```
+MIT License
+
+Copyright (c) 2018 PWXCOO
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## 2. chinese_dictionary（max32002）
+
+用于：`chars` 表
+
+- 来源：https://github.com/max32002/chinese_dictionary
+- 许可：**上游未提供 LICENSE 文件，亦未在 README 中声明授权**
+
+该项目 README 自述其数据"資料主是從別人的資料庫搬出來的"（数据主要搬自他人的数据库），
+并列出若干相关站点（漢字構形資料庫、部件檢索、漢字データベースプロジェクト等），
+但**未指明具体来源，也未给出任何许可声明**。
+
+**因此本项目不分发这份数据**，仅提供获取脚本，由使用者自行判断是否使用。
+若要完全避开此风险，请从建库脚本的 `SOURCES` 中移除该项，
+或参见主 README 的「只用许可清晰的来源」一节。
+
+与此数据相关的著作权状态不明；本项目不对其许可状况作任何陈述或保证。
+
+---
+
+## 3. CC-CEDICT
+
+用于：`english` 表（汉英对译）
+
+- 项目主页：https://cc-cedict.org/wiki/start
+- 数据获取渠道（本站使用的官方导出）：https://www.mdbg.net/chinese/export/cedict/
+- 许可：**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
+- 许可全文：https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+**再分发要求**（重要）：
+
+1. **署名**：须注明数据来自 CC-CEDICT（https://cc-cedict.org/）并以 CC BY-SA 4.0 授权
+2. **相同方式共享**：包含 CC-CEDICT 内容的衍生作品（含本项目构建出的合并词库）
+   须以 **CC BY-SA 4.0 或兼容许可**发布
+3. 不得附加法律条款或技术措施限制他人依该许可使用
+
+由于合并库同时包含 CC-CEDICT，**本项目构建出的词库不能以 MIT 发布**。
+
+---
+
+## 4. 本项目代码
+
+- 许可：MIT License，见 [LICENSE](./LICENSE)
+- 仅覆盖本仓库的源代码与文档，**不覆盖**任何词库数据
+
+---
+
+## 汇总：若你对外分发词库
+
+1. 保留 PWXCOO 的 MIT 声明（上文第 1 节）
+2. 为 CC-CEDICT 提供署名，并以 CC BY-SA 4.0 发布你的衍生库（第 3 节）
+3. 如实说明第 2 项"上游未声明许可、来源不明"的状态
+4. 不要声称词库以 MIT 发布，也不要声称数据版权属于本项目

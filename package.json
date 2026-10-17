@@ -1,0 +1,48 @@
+{
+  "name": "@GJY-cmd/dsh-cn-dict",
+  "version": "0.1.0",
+  "description": "DSH 本地离线汉语词典插件：注册 dict_lookup 工具，直连本地 SQLite 词库（字级/词语/成语/歇后语/汉英）",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "meta": {
+    "title": "汉语词典",
+    "description": "为 Agent 提供 dict_lookup 工具：本地词库查字、词、成语、歇后语与汉英对译"
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "locale/*.json"
+  ],
+  "engines": {
+    "node": ">=22.5"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "dictionary",
+    "chinese",
+    "汉语词典",
+    "offline"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GJY-cmd/dsh-cn-dict.git"
+  },
+  "homepage": "https://github.com/GJY-cmd/dsh-cn-dict#readme",
+  "bugs": {
+    "url": "https://github.com/GJY-cmd/dsh-cn-dict/issues"
+  },
+  "author": "GJY-cmd"
+}
